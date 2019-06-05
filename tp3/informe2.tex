@@ -1,0 +1,303 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{amsmath }
+%Journals
+\def\apj {ApJ}
+\def\apjl {ApJL}
+\def\apjs {ApJS}
+\def\aj {AJ}
+\def\aap {A\&A}
+\def\mnras {MNRAS}
+
+% units
+\newcommand{\pc}{{\rm pc}}
+\newcommand{\kpc}{{\rm kpc}}
+\newcommand{\Mpc}{{\rm Mpc}}
+\newcommand{\kms}{{\rm km\,s^{-1}}}
+\newcommand{\keV}{{\rm keV}}
+\newcommand{\s}{{\rm s}}
+\newcommand{\Msun}{{\rm M_{\odot}}}
+\newcommand{\fdev}{\rm FracDeV_{r}}
+%.................................................................................................
+%opening
+\title{Tipos de Galaxias}
+\author{Agustín Rodríguez M.}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+En este trabajo estudiamos la clasificaci\'on morfol\'ogica de Hubble para galaxias. Analizamos que par\'ametros pueden utilizarse para realizar la misma, y las correlaciones existentes entre los tipos de galaxias tempranas y tard\'ias, con par\'ametros f\'isicos relacionadas con las caracter\'isticas de cada tipo de galaxia. 
+\end{abstract}
+
+
+%.................................................................................................
+
+\section{Introducci\'on}
+
+La secuencia de Hubble o diagrama diapasón es un esquema de clasificación morfol\'ogico para galaxias \citep{Hubble1926}. Esta clasificación se basa en la morfolog\'ia presentada por las galaxias en el rango óptico de la luz. En la figura 1 presentamos un esquema del mismo, donde observamos a las galaxias el\'ipticas, que son aquellas clasificadas como E0-E7, y las galaxias espirales que se corresponden a aquellas clasificadas como S.
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=6.7cm,height=3cm]{sequence-de-hubble.png}
+ % sequence-de-hubble.png: 622x213 px, 72dpi, 21.95x7.52 cm, bb=0 0 622 213
+ \caption{Secuencia de Hubble. Galaxias el\'ipticas o tempranas a la izquierda indicadas con la letra E. Galaxias lenticulares se clasifican como S0. Galaxias espirales o tard\'ias con la letra S, la divisi\'on presente en \'estas se debe a si tienen o no barras.}
+ \label{fig: 1}
+\end{figure}
+
+
+Podemos reconocer distintos subsistemas en la clasificaci\'on morfol\'ogica de las galaxias. Dentro de las galaxias espirales, observamos que estas pueden ser clasificadas como Sa-Sc o Sba-Sbc, la letra S corresponde al tipo espiral, y la letra b corresponde a aquellas galaxias que presenten una 'barra' en su núcleo. Luego los brazos espirales se distinguen en el disco de las mismas, aquellas que presenten brazos espirales poco definidos tendr\'an una clasicación \textit{a} (Sa, Sba) y aquellas que presenten brazos espirales muy marcados tendr\'an una clasificación de \textit{c} (Sc, Sbc). Las galaxias lenticulares (S0) son aquellas que presentan un disco pero donde no se alcanzan a distinguir brazos espirales en \'el. Las galaxias elípticas E, acompañan su clasicación con un número que indica el grado de excentricidad de la elípse. De esta manera, aquellas que se observen completamente esf\'ericas ser\'an E0 y aquellas que se observen muy el\'ipticas ser\'an E7. 
+
+Si bien un análisis estadístico demuestra que existen correlaciones entre el tipo morfológico y algunas propiedades de las galaxias (como el color, el entorno local, la tasa de formación estelar), es importante resaltar que la clasificaci\'on morfol\'ogica no delimita completamente las caracter\'isticas de las mismas. Galaxias elípticas pueden ser clasificadas como E0 o E7 dependiendo de la proyección en el cielo de la misma, y lo mismo sucede con las espirales, que segun el \'angulo con el que las veamos podemos clasificarlas como S o Sb. 
+También es importante resaltar que \'esta clasificaci\'on se realiza en el rango óptico de la luz, y la imagen de una galaxia en otras longitudes pueden presentar una imagen muy diferente de la óptica, haciendo esta irreconocible.
+
+Hubble cre\'ia que su secuencia correspondía al estado evolutivo de las galaxias, siendo las galaxias elípticas las m\'as j\'ovenes que evolucionaban a espirales, d\'andoles el nombre entonces de galaxias de tipo tempranas a las E, y de tipo tardías a las S. Hoy en día conocemos que esta idea es equivocada.
+A\'un as\'i, la secuencia de Hubble sigue siendo hasta el día de hoy el esquema m\'as usado para definir el tipo morfológico de las galaxias, debido a su simplicidad y a razones históricas. 
+
+
+La fotometría superficial constituye una de las herramientas mas importantes para el estudio y clasificación de galaxias. Las galaxias el\'ipticas y los bulbos de las galaxias espirales pueden ser representados por la ley  $r^{1/4}$ o ley de Vaucouleurs (1949). Por otro lado, la distribuci\'on de brillo superficial del disco obedece una ley exponencial \citep{Freeman1970}.
+De modo que una manera de realizar una clasificación morfologica, es calcular el \textit{likelihood} de un ajuste de cada tipo \citep{Strateva2001}. Esto nos permite ver que probabilidad tiene cada galaxia de ser espiral o el\'iptica, y de esta manera tener un criterio de clasificación. 
+ 
+En este trabajo realizaremos un estudio estad\'istico de galaxias, buscando correlaciones entre la morfolog\'ia de las galaxias y caracter\'isticas f\'isicas de las mismas, como el color, el brillo superficial, tama\~no y magnitud. 
+
+
+
+
+
+\section{Datos}
+El Sloan Digital Sky Server (SDSS) \citep{SDSS} constituye hasta la fecha uno de los relevamientos espectrosc\'opicos y fotom\'etricos m\'as importantes hasta la fecha.  Utiliz\'o un telescopio con una c\'amara con 30 CCD's que escane\'o un cuarto del cielo en 5 bandas fotom\'etricas (u, g, r, i, z). Tambi\'en esta equipado con un espectr\'ografo multiobjeto con fibras \'opticas que puede obtener hasta 640 espectros simult\'aneamente \citep{SDSS}. 
+El SDSS contiene espectros de casi un mill\'on de galaxias y para este trabajo fueron utilizados datos de este cat\'alogo.
+
+
+
+
+
+Utilizamos una muestra de 45283 galaxias de el DR7 (s\'eptimo relevamiento) \citep{SDSS7} para realizar el trabajo. Limitamos nuestra muestra con el prop\'osito de estudiar s\'olo galaxias de entre 0.02 $<$ z $<$ 0.05 y 14.5 $<$ r $<$ 17.77 (z: corrimiento al rojo, r: magnitud petrosiana en la banda r) \citep{Petrosian}. Estas limitaciones se utilizaron con el prop\'osito de obtener una muestra poco profunda en redshift, para evitar realizar la correcci\'on K, y por otro lado, trabajamos con aquellas magnitudes por debajo de la magnitud l\'imite espectrosc\'opica (de 17.77), ya que el SDSS garantiza completitud hasta esta magnitud. Tambi\'en tenemos un l\'imite fotom\'etrico de r = 14.5, debido a que los espectros se obtienen usando un espectr\'ografo de fibras, cuya separaci\'on es de 55''. La ubicaci\'on de cada fibra esta dada por un algoritmo que maximiza el n\'umero de objetos que puedan ser observados. Objetos mas cercanos que 55'' presentan el problema de colisi\'on de fibras, produciendo que algunos no puedan ser observados, de esta manera se pierden objetos brillantes y es necesario un valor l\'imite a partir de el cual tomar esp\'ectros.
+
+
+La figura 2 presenta las regiones en el cielo cubiertas por nuestra muestra y en la figura 3 presentamos la distribuci\'on obtenida de redshift. 
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=10cm,height=10cm]{SDSS.png}
+ % SDSS.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Regi\'on de el cielo cubierta por el SDSS. En los ejes tenemos la ascension recta ($\alpha$) y la declinaci\'on ($\delta$).}
+ \label{fig: 2}
+\end{figure}
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=10cm,height=10cm]{zdist.png}
+ % zdist.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Distribuci\'on de el desplazamiento al rojo z (redshift) de la muestra.}
+ \label{fig: 3}
+\end{figure}
+
+
+Podemos apreciar en la misma una tendencia de que al aumentar el redshift tenemos m\'as galaxias en la muestra, lo cual se explica por el hecho de que el cat\'alogo cubre una secci\'on angular de el cielo, teniendo de esta manera mayores vol\'umenes de universo a medida que aumentamos la distancia. Estos efectos deben corregirse para obtener una muestra completa por vol\'umen (ver seccion 3).
+Utilizamos magnitudes petrosianas para el c\'alculo de las magnitudes absolutas de las galaxias y las magnitudes model con el fin de calcular los colores de las mismas. Las magnitudes petrosianas dependen del radio petrosiano \citep{Petrosian} , y este no es el mismo para todos los filtros, por lo cual estas magnitudes no son confiables para calcular los colores de las galaxias. Es por esto que utilizamos las magnitudes model, que utilizan un mismo radio en todos los filtros. 
+Las magnitudes model, son calculadas luego de realizar un ajuste exponencial o de un perfil de Vaucouleurs a el flujo de cada galaxia. 
+
+Tambi\'en obtuvimos de el cat\'alogo las extinciones en cada banda, utilizadas para corregir las magnitudes aparentes. Los radios petrosianos $r_{50}$ y $r_{90}$ y la fracDev en la banda r. Con el prop\'osito de obtener una muestra por encima de el seeing medio de el SDSS restrigimos nuestra muestra considerando que $r_{50} > 1.5''$ \citep{Shen2003}.
+
+\section{Completitud por Volumen}
+Los cat\'alogos limitados en flujo tienen cada vez menos \textit{densidad} de galaxias d\'ebiles (de magnitud) a medida que aumenta el redshift. Corregir este efecto es importante para no introducir un sesgo en los datos utilizados. Se llama \textit{muestra completa por volumen} a una que halla sido corregida de este efecto. Para realizar esto entonces lo que se debe hacer es encontrar una magnitud l\'imite, tal que todas las magnitudes superiores sean visibles en todo el volumen de la muestra. 
+
+
+
+Con este prop\'osito, calculamos la magnitud absoluta en la banda r de cada galaxia. Para este c\'alculo asumimos una cosmolog\'ia de $H_{0}=100Mpc^{-1}h\kms$, $\Omega_{M}=0.3, \Omega_{\Lambda}=0.7$.
+Este modelo cosmol\'ogico fue utilizado para calcular las distancias luminosidad y distancia angular. Luego pudimos calcular las magnitudes absolutas, que son presentadas en la figura 4, en funci\'on de el redshift. La l\'inea negra se\~nala aquella magnitud por encima de la cual la muestra es completa por volumen. \begin{figure}[h]
+ \centering
+ \includegraphics[width=10cm,height=10cm]{Mag_z.png}
+ % Mag_z.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Magnitudes absolutas y redshift para la muestra de datos. La l\'inea negra marca el l\'imite sobre el que obtenemos una muestra completa por volumen.}
+ \label{fig: 4}
+\end{figure}
+\section{Criterios de separaci\'on en tipos \textit{tempranas} y \textit{tard\'ias}}
+
+
+
+El SDSS calcula para cada objeto muchos par\'ametros morfol\'ogicos globales. Un ejemplo de estos, es el \textit{likelihood} de un ajuste exponencial o de un perfil de Vaucouleurs, cuantificado en el $\fdev$ \citep{Strateva2001}. Los perfiles de Vaucouleurs son aquellos que mejor ajustan los perfiles de luminosidad de las galaxias de el\'ipticas (tempranas). Es por esto, que un valor de $\fdev$ cercano a 1 corresponde al de una galaxia de tipo temprana. Por otro lado, las galaxias espirales (tard\'ias) son ajustadas por perfiles exponenciales, por lo que un valor de $\fdev$ cercano a 0 corresponde a estas.De modo que dividimos la muestra utilizando el valor de $\fdev$=0.5 como l\'imite para dividir por tipos.
+
+Otro valor que puede utilizarse para separar galaxias por tipo morfol\'ogico es el \'indice de concentraci\'on C, este se define como la relación: 
+\begin{equation}
+C=\frac{r_{90}}{r_{50}}                                                             
+\end{equation}
+donde $r_{90}$ y $r_{50}$ son los radios petrosianos que contienen el 90 y 50 $\%$ de el flujo petrosiano. 
+
+
+Aquellas galaxias que tengan valores \textit{bajos} de C, ser\'an galaxias cuyo flujo de luminosidad este concentrado en radios petrosianos chicos (podemos pensar en un caso extremo en que $r_{90}=r_{50}$ entonces C=1). Este comportamiento es m\'as tipico de galaxias espirales (tard\'ias). Por lo que podemos esperar que aquellos valores m\'as altos de C correspondan a galaxias el\'ipticas o tempranas. 
+    
+
+Observamos en la figura 5 que existe una relaci\'on lineal, (con una cierta dispersi\'on) entre el par\'ametro de concentraci\'on C y $\fdev$. Bas\'andonos en el an\'alisis anterior, realizamos un ajuste lineal, obteniendo los siguientes par\'ametros: 
+\begin{equation}
+ C=a*\fdev+b
+\end{equation}
+$$
+a=0.863 \pm 0.003  \qquad b=2.146 \pm 0.002
+$$
+Con lo cual, un valor de $\fdev=0.5$ corresponde a C=2.58.
+
+
+Nuestra estimaci\'on de C surge del valor de $\fdev$ propuesto como l\'imite. Un valor de $\fdev\geq0.8$ tiene una probabilidad muy alta de corresponder a una galaxia temprana, y un valor $\fdev\leq0.2$ a una tard\'ia. Los valores en el medio, tienen incertezas considerables, a\'un as\'i, con estas limitaciones estimamos un valor de C=2.58, que esta de acuerdo con valores estimados por otros autores como \citet{Strateva2001} que utiliza un valor de C=2.6 o \citet{Shimasaku2001} que estudian diferentes \'indices de concentraci\'on \textit{inversos} y sugieren que para un valor de $C^{-1}= 0.39$ (correspondiente a C = 2.58) hay una completitud de $\sim80-90\%$ en la clasificac\'on morfol\'ogica de su muestra. 
+
+
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=10cm,height=10cm]{C_fdev.png}
+ % C_fdev.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Relaci\'on lineal entre el \'indice de concentraci\'on C y $\fdev$. El ajuste se utiliza para encontrar a que valor de C corresponde un valor de $\fdev$= 0.5, utilizado para separar nuestra muestra.}
+ \label{5}
+\end{figure}
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=12cm,height=5cm]{hist_color.png}
+ % hist_color.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Distribucion de colores de galaxias u-r (en azul) y g-r (en rojo). Las l\'ineas verticales se\~nalan aquellos valores que pueden utilizarse para separar entre galaxias \textit{rojas} o \textit{tempranas}}
+ \label{6}
+\end{figure}
+
+
+En la figura 6 presentamos la distribuci\'on de colores de la muestra. Notamos que ambas distribuciones presentan dos picos muy marcados. 
+Esta bimodalidad, es debida que uno esta observando dos poblaciones diferentes de galaxias, aquellas que son de tipo temprano, y las de tipo tard\'io \citep{Strateva2001}. En vista de esto, el color tambi\'en es un par\'ametro interesante para utilizar para separar por tipos la muestra de galaxias y estudiar correlaciones entre la morfolog\'ia con otros par\'ametros f\'isicos. 
+Siguiendo a Strateva et al. (2001), en este trabajo utilizamos como l\'imite un valor de u-r=2.22 para separar por colores.
+
+\section{Resultados}
+
+Con el prop\'osito de estudiar si existen correlaciones entre los tipos morfol\'ogicos de galaxias y alg\'un par\'ametro f\'isico, utilizamos los par\'ametros presentados en la secci\'on anterior para dividir nuestra muestra.
+La figura 7 presenta 2 diagramas color-magnitud. En el panel izquierdo, presentamos simplemente el diagrama color-magnitud, sin realizar separaci\'on de ningun tipo. En el panel derecho, la separaci\'on esta realizada por el \'indice de concentraci\'on. Aquellas galaxias con un valor de C $\geq$ 2.58 fueron clasificadas como de tipo tempranas, mientras que las de tipo tard\'io fueron aquellas con C $<$ 2.58. 
+
+Este gr\'afico es interesante porque nos permite ver que las galaxias que fueron clasificadas como de tipo temprano se ubicaron, preferentemente, en las regiones de mayor u-r, es decir, son mas \textit{rojas}. Mientras que las que fueron clasificadas como de tipo tard\'io se ubicaron en las regiones de menor u-r, siendo de esta manera mas \textit{azules}. Esto apoya lo anteriormente mencionado en el gr\'afico de la distribuci\'on de colores, donde resaltamos que la bimodalidad presente se deb\'ia a dos poblaciones de galaxias con colores diferentes.
+
+
+
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=12cm,height=6cm]{color_mag.png}
+ % color_mag.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Diagramas color magnitud. La muestra fue separada por color en el panel derecho.}
+
+ \label{fig: 8}
+\end{figure}
+
+En las figuras se distinguen claramente dos comportamientos de las galaxias, a altas magnitudes predominan galaxias rojas (tempranas), mientras que a bajas magnitudes predominan galaxias azules (tard\'ias). Estas dos regiones se denominan secuencia roja y nube azul y tienen su explicaci\'on en t\'erminos de la evoluci\'on de las galaxias \citep{Schneider}. 
+Aquellas galaxias con una elevada tasa de formaci\'on estelar, se incluyen en la nube azul, y la secuencia roja concentra principalmente galaxias de tipo temprano, con baja o escasa formaci\'on estelar. 
+La fracci\'on de galaxias rojas tiende a incrementar con el tiempo \citep{Faber2007}, lo cual sugiere una tendencia de galaxias azules \textit{enrojeciendose} al disminuir su formaci\'on estelar, y moviendose en el diagrama hacia la secuencia roja \citep{Wyder2007}. 
+
+
+La figura 8 presenta las magnitudes absolutas en la banda r en funci\'on de el $r_{50}$. En el panel superior izquierdo se presentan todos los datos y en el panel superior derecho separamos las galaxias por tipo morfol\'ogico en base al \'indice de concentraci\'on C. Notamos que a un radio fijo, las galaxias tempranas tienden tener magnitudes absolutas mas chicas (es decir, tienen mayor luminosidad). En el panel inferior izquierdo, la separaci\'on fue hecho por color. Las azules son aquellas con u-r$\leq$2.3 y las rojas con $u-r>2.3$. En este gr\'afico, notamos que, a un radio fijo, las galaxias rojas tienden a tener magnitudes absolutas mayores que las azules. Lo cual apoya la idea de que las galaxias espirales tienden a ser azules, y las el\'ipticas tienden a ser rojas. En el panel inferior derecho, separamos las galaxias considerando que cumplan las condiciones antes mencionadas (rojas-el\'ipticas, azules-espirales), y en este caso realizamos un ajuste lineal para ambos grupos obteniendo los siquientes par\'ametros:
+
+\begin{equation}
+ M_{r}=a*log_{10}(r_{50})+b
+\end{equation}
+$$
+a_{tem}=-2.69 \pm 0.04  \qquad a_{tar}=-2.11 \pm 0.03
+$$
+$$
+%\begin{equation}
+ b_{tem}=-19.18 \pm 0.01 \qquad b_{tar}=-18.29 \pm 0.01
+%\end{equation}
+$$
+Donde \textit{tem} y \textit{tar} hacen referencia a los par\'ametros para el ajuste de galaxias tempranas o tard\'ias. 
+
+
+Luego estudiamos un diagrama de brillo superficial en funci\'on de el tama\~no, conocido como diagrama de Kormendy. Se observa en la figura 9.
+Al igual que cuando estudiamos el diagrama tama\~no-magnitud, en el panel superior izquierdo no hemos distinguido entre tempranas y tard\'ias. Si lo hemos hecho en el panel superior derecho, donde el \'indice de color se utiliz\'o como par\'ametro para la sepaci\'on. Aqu\'i se observa que aquellas galaxias de tipo temprano preferentemente ocupan las regiones de mayor brillo superficial, y de menor radio petrosiano. Las galaxias tard\'ias, se encuentran preferentemente en zonas de mayores radios petrosianos y de menor brillo superficial. Este comportamiento es igual cuando se utiliza el color u-r para realizar la separaci\'on (panel inferior izquiero).
+Es decir, a un radio fijo, las galaxias de tipo temprano (o las galaxias rojas), son m\'as brillantes en brillo superficial que las de tipo tard\'io (o las azules).
+Luego se utilizaron las galaxias que sean de un determinado tipo morfol\'ogico clasificadas tanto por el \'indice de concentraci\'on y el color, y se realiz\'o un ajuste lineal. Esto se observa en el panel inferior derecho, y se obtuvieron los siguientes par\'ametros para el ajuste:
+\begin{equation}
+ \mu_{50}=a*log_{10}(r_{50})+b
+\end{equation}
+$$
+a_{tem}=2.38 \pm 0.04  \qquad a_{tar}=2.92 \pm 0.03
+$$
+$$
+%\begin{equation}
+ b_{tem}=17.80 \pm 0.01 \qquad b_{tar}=18.70 \pm 0.01
+%\end{equation}
+$$
+La correlaci\'on encontrada entre color y morfolog\'ia, vuelve a ser fuerte al analizar el diagrama de Kormendy, al igual que lo fue cuando estudiamos la relaci\'on tama\~no-magnitud.
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=10cm,height=10cm]{mag_radio.png}
+ % mag_radio.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Magnitud y radio petrosiano. En el panel inferior izquierdo, separamos las galaxias en base a el color. En el panel superior derecho, separamos la muestra morfologicamente utilizando el \'indice de concentraci\'on, y en el panel inferior derecho la separaci\'on se hizo en base a el color y morfol og\'ia.}
+ \label{fig: 9}
+\end{figure}
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=10cm,height=10cm]{brillo_r.png}
+ % brillo_r.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Brillo superficial y radio petrosiano. El panel superior derecho presenta la muestra dividida morfologicamente utilizando el \'indice de concentraci\'on. En el panel inferior izquierdo, separamos la muestra por colores. En el panel inferior derecho, separamos la muestra por color-morfolog\'ia.}
+ \label{fig:10}
+\end{figure}
+
+
+\section{Conclusiones}
+
+En este pr\'actico, utilizamos el SDSS para un estudio sobre la morfolog\'ia de las galaxias y su relaci\'on con sus propiedades f\'isicas. Utilizando el \'indice de concentraci\'on para separar las galaxias entre tempranas y tard\'ias, estudiamos sus magnitudes absolutas, sus colores, sus brillos superficiales y sus radios petrosianos. 
+Los principales resultados encontrados pueden resumirse de la siguiente manera:
+\begin{itemize}
+  \item Pudimos comprobar que en el esquema secuencia roja y nube azul, las galaxias tard\'ias alcanzan magnitudes mas d\'ebiles que las tempranas. 
+ \item Las galaxias tard\'ias alcanzan radios petrosianos mas grandes que las tempranas. Estas llegan a tener radios petrosianos menores que las tard\'ias. 
+ \item En el diagrama de Kormendy, las galaxias tempranas ocupan preferentemente las zonas de mayor brillo superficial, y las tard\'ias las de menor brillo.
+ \item Existe una relaci\'on bastante fuerte entre en color de las galax\'ias y su morfolog\'ia. Las galaxias tempranas son en general rojas, y las tard\'ias azules. Todos nuestros estudios se realizaron separando por morfolog\'ia y por color, encontrando que al separar entre rojas y azules, el resultado esta en buen acuerdo con el que uno obtiene al separar morfol\'ogicamente. 
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\bibliographystyle{aa} %.bst
+\bibliography{biblio} %.bib
+
+%\begin{thebibliography}{}
+%\bibitem[York et al.(2000)]{b1} York, D.~G., Adelman, J., Anderson, J.~E., Jr., et al.\ 2000, \aj, 120, 1579 
+%\bibitem[Yip et al.(2004)]{Yip:2004} Yip, C.~W., Connolly, A.~J., Szalay, A.~S., et al.\ 2004, \aj, 128, 585 
+%\bibitem[Mart{\'{\i}}nez \& Muriel(2011)]{b2} Mart{\'{\i}}nez, H.~J., \& Muriel, H.\ 2011, \mnras, 418, L148
+%\end{thebibliography}
+
+%.................................................................................................
+
+\centering
+\section*{APENDICE}
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=5cm,height=5cm]{c_parametro.png}
+ % c_parametro.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Distribuci\'on de el \'indice de concentraci\'on C de la muestra.}
+ \label{fig: 5}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=5cm,height=5cm]{fravdev.png}
+ % fravdev.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Distribuci\'on de el par\'ametro $FracDeV_{r}$ de la muestra. }
+ \label{fig: 6}
+\end{figure}
+
+
+\end{document}
+

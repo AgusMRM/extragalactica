@@ -1,0 +1,15 @@
+read.table('tabla.csv', sep=',', skip=1) -> CM
+#png('SDSS.png')
+png('zdist.png')
+library(astro)
+a <- CM$V1
+d <- CM$V2
+r <- CM$V7
+z <- subset(CM$V3, 14.5<=r & r<=17.77)
+
+
+
+zh <- hist(z,plot=FALSE)
+#aplot(a,d,col='black',pch='.',xlab=(expression(alpha)),ylab=(expression(delta)))
+aplot(zh$mids,zh$count/sum(zh$counts),type='s',xlab=c('z'),ylab='',lwd=2.2)
+dev.off()

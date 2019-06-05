@@ -1,0 +1,36 @@
+
+program calculadora_distancias
+        implicit none
+        integer j,i
+        real z, d_luminosity, d_angular, zi(6000), add(6000), ld(6000), cd, cmsa
+        
+        open(10,file='tabla_redshift.dat',status='old',action='read')
+        open(11,file='cosmology.dat',status='old',action='read')
+        open(12,file='distancias.dat',status='unknown')
+
+        do i=1,6000
+                read(11,*) zi(i),cd,add(i),ld(i),cmsa
+        enddo
+         close(11)
+
+         do j=1,50000
+                read(10,*) z
+                 do i=2,6000
+                   if ( zi(i) > z .and. zi(i-1) <= z) then ! .and. z < zi(i) ) then 
+                           call INTERPOLACION(d_luminosity, d_angular, z,zi(i-1(,zi(i),ld(i-1),ld(i),add(i-1),add(i))
+                           go to 4                  
+                   endif
+                 enddo
+         4 write(12,*) d_luminosity, d_angular, z
+         enddo
+          close(10)
+          close(12)
+endprogram
+
+SUBROUTINE INTERPOLACION(d_luminosity, d_angular,z,z1,z2,ld1,ld2,add1,add2)
+                        real, intent(out) ::  d_luminosity, d_angular
+                        real, intent(in) :: ld1,ld2,z1,z2,z,add1,add2
+
+                        d_luminosity=ld1 + (ld2-ld1)*(z-z1)/(z2-z1)
+                        d_angular=add1 + (add2-add1)*(z-z1)/(z2-z1)
+ENDSUBROUTINE

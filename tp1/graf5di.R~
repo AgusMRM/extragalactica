@@ -1,0 +1,13 @@
+read.table('resultados.dat')->d
+c <- d$V14
+ur <- d$V15
+Mr <-d$V6
+
+
+xte <- subset(ur, c<2.3)
+yte <- subset(Mr, c<2.3)
+xta <- subset(ur,c>=2.3)
+yta <- subset(Mr, c>=2.3)
+
+plot(xte,yte,col='blue')
+points(xta,yta,col='red')

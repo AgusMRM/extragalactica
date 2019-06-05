@@ -1,0 +1,7 @@
+read.table('field.dat') -> D
+
+Mr <- subset(D$V4, D$V21 > 0)
+nuvr <- subset(D$V21, D$V21 > 0)
+
+plot(Mr,nuvr,pch='.',col='darkgreen')
+ 

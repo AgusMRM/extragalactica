@@ -1,0 +1,130 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{amsmath }
+%Journals
+\def\apj {ApJ}
+\def\apjl {ApJL}
+\def\apjs {ApJS}
+\def\aj {AJ}
+\def\aap {A\&A}
+\def\mnras {MNRAS}
+
+% units
+\newcommand{\pc}{{\rm pc}}
+\newcommand{\kpc}{{\rm kpc}}
+\newcommand{\Mpc}{{\rm Mpc}}
+\newcommand{\kms}{{\rm km\,s^{-1}}}
+\newcommand{\keV}{{\rm keV}}
+\newcommand{\s}{{\rm s}}
+\newcommand{\Msun}{{\rm M_{\odot}}}
+\newcommand{\fdev}{\rm FracDeV_{r}}
+%.................................................................................................
+%opening
+\title{Funci\'on de Luminosidad}
+\author{Agustín Rodríguez M.}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+
+%.................................................................................................
+
+\section{Introducci\'on}
+La funci\'on de Luminosidad (LF) de galaxias es la distribuci\'on de probabilidad $\Phi(M)$ sobre magnitudes absolutas M de galaxias \citep{Binggeli1988}. Constituye una herramienta fundamental para el estudio de las poblaciones de galaxias. Esta distribuci\'on satisface: 
+
+\begin{equation}
+ \int_{\Re}\Phi(M)dM=1
+\end{equation}
+
+Si N es el n\'umero de objetos en un volumen dV en un rango de magnitudes M y M + dM y las magnitudes M son estad\'isticamente independientes de la distribuci\'on espacial, la densidad de probabilidad conjunta N(M,x,y,z) puede expresarse de la siguiente manera:
+
+\begin{equation}
+ N(M,x,y,z)dMdV=\Phi(M)D(x,y,z)dMdV
+\end{equation}
+
+donde D(x,y,z) es la funci\'on de densidad espacial que describe el n\'umero de objetos por unidad de vol\'umen. 
+
+
+
+
+
+La LF puede realizarse sobre las galaxias de alg\'un tipo morfol\'ogico de la secuencia de Hubble, o sobre todas las galaxias, conoci\'endose esta \'ultima como la Funci\'on de Luminosidad \textit{general} (o universal). Esta funci\'on es muy importante en el estudio de la estructura en gran escala del universo, ya que permite estimar el contenido total de materia en galaxias. El bias introducido en todos los cat\'alogos limitados en flujo, pueden ser corregidos mediante la LF, conociendose como \textit{Correcci\'on de Malquist}.
+
+
+
+Tipicamente lso c\'atalogos limitados en flujo se vuelven progresivamente m\'as incompletos a medida que aumenta el redshift. Se han desarrollado diversos m\'etodos para calcular la LF y corregir los cat\'alogos de estos efectos. En general, se basan en realizar una ponderaci\'on de las galaxias en base a sus magnitudes.
+
+Uno de los m\'etodos m\'as usados y mas simples es el m\'etodo cl\'asico, tambi\'en conocido como $1/V_{max}$.  Este se basa en la asumpci\'on de que la distribuci\'on de galaxias D(x,y,z) es uniforme. El m\'etodo pondera a las galaxias calculando el $V_{max}$, que es el volumen correspondiente a la m\'axima distancia que una galaxia puede ser observada y a\'un seguir perteneciendo a la muestra (ver secci\'on 2). Otro es el m\'etodo C, que a diferencia de el cl\'asico no hace suposiciones sobre la distribuc\'on espacial de galaxias \citep{Lynden-Bell1971}. Un m\'etodo muy popular es el STY  
+
+
+
+
+\section{Correcci\'on K}
+Fuentes observadas en diferentes redshifts necesitaran una correcci\'on en sus magnitudes para poder ser comparadas entre ellas. Esto se conoce como correcci\'on K y se debe a la expansi\'on del universo. A trav\'es de esta podemos transformar una longitud de onda observada $\lambda_{0}$, cuando la medimos a trav\'es de un filtro, a un redshift z, a la longitud de onda emitida, $\lambda_{e}$ en el sistema en reposo a z=0. La correcci\'on K es una correcci\'on al flujo de un objeto, que transforma la medida del flujo de un objeto a cierto redshift a una medida en un sistema en reposo. (tesis de Taverna)
+
+De modo que las magnitudes absolutas de un objeto vendr\'an dadas por la siguiente relaci\'on: 
+\begin{equation}
+M = m - 25 - 5*log_{10}(d_{l}) + E + K 
+\end{equation}
+Donde E es el par\'ametro de extensi\'on y $d_{l}$ la distancia luminosidad.
+
+En la secci\'on APENDICE se presentan los valores de las correcciones K para la muestra de 544449 galaxias de el SDSS DR7 \citep{SDSS} \citep{Abazajian2009} utilizada en este trabajo. Decidimos utilizar los valores de la correcci\'on K con sistema en reposo en z=0.1 (figura ..) debido a que la mayoria de galaxias del SDSS se encuentran a $z\sim0.1$, y alrededor de este redshift tendremos de esta manera correcciones pequeñas. 
+
+Corregimos nuestros datos de esta manera por la correcci\'on K, por la extensi\'on E, y utilizamos una cosmolog\'ia con $H_{0}=100\kms Mpc$ para calcular las magnitudes absolutas siguiendo la f\'ormula (3).
+
+\section{Funci\'on de Luminosidad y Funci\'on de Schechter }
+
+Con el prop\'osito de calcular la funci\'on de luminosidad y ajustarle alguna forma funcional, restringimos nuestra muestra de galaxias a aquellas que tengan magnitudes absolutas M entre $-16 >= M_{r} >= -23 $. 
+
+\section{APENDICE}
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=10cm,height=10cm]{../tp3/Kz0.png}
+ % Kz0.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \label{fig:1}
+\end{figure}
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=10cm,height=10cm]{../tp3/Kz1.png}
+ % Kz1.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\bibliographystyle{aa} %.bst
+\bibliography{biblio} %.bib
+
+%\begin{thebibliography}{}
+%\bibitem[York et al.(2000)]{b1} York, D.~G., Adelman, J., Anderson, J.~E., Jr., et al.\ 2000, \aj, 120, 1579 
+%\bibitem[Yip et al.(2004)]{Yip:2004} Yip, C.~W., Connolly, A.~J., Szalay, A.~S., et al.\ 2004, \aj, 128, 585 
+%\bibitem[Mart{\'{\i}}nez \& Muriel(2011)]{b2} Mart{\'{\i}}nez, H.~J., \& Muriel, H.\ 2011, \mnras, 418, L148
+%\end{thebibliography}
+
+%..................................................................................
+
+\end{document}
+

@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: informe1.aux
+The style file: aa.bst
+Database file #1: biblio.bib
+Repeated entry---line 261 of file biblio.bib
+ : @article{Lynden-Bell1971
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 811 of file biblio.bib
+ : @article{SDSS
+ :              ,
+I'm skipping whatever remains of this entry
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--empty publisher in Elmegreen
+Warning--empty publisher in Schneider
+Warning--empty publisher in Taverna
+You've used 14 entries,
+            3039 wiz_defined-function locations,
+            770 strings with 9758 characters,
+and the built_in function-call counts, 12827 in all, are:
+= -- 932
+> -- 1702
+< -- 11
++ -- 569
+- -- 555
+* -- 1185
+:= -- 2425
+add.period$ -- 14
+call.type$ -- 14
+change.case$ -- 240
+chr.to.int$ -- 14
+cite$ -- 17
+duplicate$ -- 256
+empty$ -- 389
+format.name$ -- 587
+if$ -- 2497
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 13
+newline$ -- 46
+num.names$ -- 57
+pop$ -- 246
+preamble$ -- 1
+purify$ -- 240
+quote$ -- 0
+skip$ -- 235
+stack$ -- 0
+substring$ -- 257
+swap$ -- 8
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 117
+warning$ -- 3
+while$ -- 54
+width$ -- 0
+write$ -- 140
+(There were 2 error messages)

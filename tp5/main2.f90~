@@ -1,0 +1,352 @@
+PROGRAM three
+        IMPLICIT NONE
+        INTEGER, PARAMETER :: n=508330, bines=12
+        INTEGER :: i,j,k,bin
+        REAL :: a,smass_min, smass_max, smas, me, w 
+        REAl, DIMENSION(n) :: smass, met, wp, smass1, met1, wp1
+        REAL, DIMENSION(bines) :: med, stdv,xm,mdn
+!***************************************************************************
+        open(10,file='field.dat',status='old')
+        k = 0
+        smass_min = 999
+        smass_max = -999
+        do i=1,n
+                read(10,*) a,a,a,a,a,a,a,a,smas,a,a,a,me,w
+                if (smas < 8.) cycle 
+                if (me < -90.) cycle
+                        !print*, smas 
+                        k = k + 1
+                        smass(k) = smas
+                        met(k)   = me
+                        wp(k)    = w
+                        if (smas >= smass_max) smass_max = smas
+                        if (smas <= smass_min) smass_min = smas
+                
+        enddo
+        close(10)
+!*************************************************************************
+        print*, smass_max, smass_min, k
+        smass_max = 11.5
+        smass_min = 8.
+        call medias(smass,met,k,bines,smass_max,smass_min,xm,med,stdv)
+        open(22,file='mediasmain.dat',status='unknown')
+        do i=1,bines
+                write(22,*) med(i), stdv(i), xm(i)
+        enddo
+        close(22)
+!************************************************************************
+        open(14,file='mediana.dat',status='unknown')
+        smass1=smass
+        call sort2(k,smass,met)
+        call sort2(k,smass1,wp)
+        
+        call mediana(smass, met, k, bines, smass_max, smass_min,mdn) 
+        do i=1,bines
+                write(14,*) mdn(i), stdv(i), xm(i)
+        enddo        
+        close(14)
+
+ENDPROGRAM three
+
+SUBROUTINE medias(x,y,k,bines,mx,mn,xm,med,stdv)
+        implicit none
+        integer :: i,j,k,n,bines,bin
+        real, dimension(k) :: x,y
+        integer, dimension(bines) :: y2
+        real,dimension(bines) :: med,y1,stdv,xm
+        real :: mx, mn, abin
+        
+         
+        y1  = 0
+        y2  = 0
+        med = 0
+        abin = (mx-mn)/real(bines)
+        stdv = 0
+        do i = 1, k
+                if (x(i) < mn .or. x(i) > mx) cycle
+                bin = int(( x(i) - mn)/abin) + 1
+                if (bin == bines+1) bin=bines
+                y1(bin) = y1(bin) + y(i)
+                y2(bin) = y2(bin) + 1
+        enddo
+        do i=1,bines
+                med(i) = y1(i)/real(y2(i))
+                xm(i)  = (i-0.5)*abin + mn
+        enddo
+        do i=1,k
+                if (x(i) < mn .or. x(i) > mx) cycle
+                bin = int(( x(i) - mn)/abin) + 1
+                if (bin == bines+1) bin=bines
+                if (bin < 1 ) bin=1
+                stdv(bin) = stdv(bin) + (y(i)-med(bin))**2 
+        enddo
+        do i=1,bines
+                stdv(i) = sqrt(stdv(i)/real(y2(i)))
+        enddo
+ENDSUBROUTINE
+
+SUBROUTINE mediasW(x,y,w,n,k,bines,mx,mn,med,stdv)
+        implicit none
+        integer :: i,j,k,n,bines,bin
+        real, dimension(n) :: x,y,w
+        real,dimension(bines) :: med,y1, y2, stdv
+        real :: mx, mn, abin
+        
+        y1  = 0
+        y2  = 0
+        med = 0
+        abin = (mx-mn)/real(bines)
+        do i = 1, k
+                bin = int(( x(i) - mn)/abin) + 1
+                if (bin == bines+1) bin=bines
+                y1(bin) = y1(bin) + y(i)*w(i)
+                y2(bin) = y2(bin) + w(i)
+        enddo
+        do i=1,bines
+                med(i) = y1(i)/y2(i)
+        enddo
+        do i=1,k
+                bin = int(( x(i) - mn)/abin) + 1
+                if (bin == bines+1) bin=bines
+                stdv(bin) = stdv(bin) + w(i)*(x(i)-med(bin))**2/y2(bin)
+        enddo
+ENDSUBROUTINE
+
+subroutine medianaw(x,y,w,k,bines,mx,mn)
+        implicit none
+        integer :: i,j,k,indice, bines, bin, h
+        real :: abin, mx, mn
+        real, dimension(k) :: x, y, w
+        real,dimension(bines) :: y3
+        integer,dimension(bines) :: y2
+        real, allocatable :: mdn(:)
+
+        
+        y2  = 0
+        abin = (mx-mn)/real(bines)
+        do i = 1, k
+                if (x(i) < mn .or. x(i) > mx) cycle
+                bin = int(( x(i) - mn)/abin) + 1
+                if (bin == bines+1) bin=bines
+                y2(bin) = y2(bin) + 1           !tengo x,y ordenados
+                y3(bin) = y3(bin) + w(i)           !tengo x,y ordenados
+                                                !quiero saber cuantos valores caen en cada bin
+        enddo 
+        k = 0
+        do i=1,bines
+                allocate(mdn(y2(i)))        ! creo un vector con dimension de la cantidad de datos en el bin
+                do j = k +1 , k + y2(i)         !le asigno sus datos correspondientes
+                        h = j - k
+                        mdn(h) = y(j)
+                enddo
+                k = k + y2(i)
+                write(14,*) mdn(int(y2(i)/2.)), (i-.5)*abin + mn
+                !print*, mdn(int(y2(i)/2.))       ! la mediana es el valor del diome
+                deallocate(mdn)
+        enddo
+endsubroutine
+
+subroutine mediana(x,y,k,bines,mx,mn,mdn2)
+        implicit none
+        integer :: i,j,k,indice, bines, bin, h
+        real :: abin, mx, mn
+        real, dimension(k) :: x, y
+        integer,dimension(bines) :: y2
+        real,dimension(bines) :: mdn2
+        real, allocatable :: mdn(:)
+
+        
+        y2  = 0
+        abin = (mx-mn)/real(bines)
+        do i = 1, k
+                if (x(i) < mn .or. x(i) > mx) cycle
+                bin = int(( x(i) - mn)/abin) + 1
+                if (bin == bines+1) bin=bines
+                y2(bin) = y2(bin) + 1           !tengo x,y ordenados
+                                                !quiero saber cuantos valores caen en cada bin
+        enddo 
+        k = 0
+        do i=1,bines
+                allocate(mdn(y2(i)))        ! creo un vector con dimension de la cantidad de datos en el bin
+                do j = k +1 , k + y2(i)         !le asigno sus datos correspondientes
+                        h = j - k
+                        mdn(h) = y(j)
+                enddo
+                call sort(y2(i),mdn)
+                k = k + y2(i)
+                mdn2(i) = mdn(int(y2(i)/2.))
+              !  write(14,*) mdn(int(y2(i)/2.)), (i-.5)*abin + mn
+              !  print*, mdn(int(y2(i)/2.))       ! la mediana es el valor del diome
+                deallocate(mdn)
+        enddo
+
+endsubroutine
+
+SUBROUTINE sort(n,arr)
+      INTEGER n,M,NSTACK
+      REAL arr(n)
+      PARAMETER (M=7,NSTACK=50)
+      INTEGER i,ir,j,jstack,k,l,istack(NSTACK)
+      REAL a,temp
+      jstack=0
+      l=1
+      ir=n
+1     if(ir-l.lt.M)then
+        do 12 j=l+1,ir
+          a=arr(j)
+          do 11 i=j-1,1,-1
+            if(arr(i).le.a)goto 2
+            arr(i+1)=arr(i)
+11        continue
+          i=0
+2         arr(i+1)=a
+12      continue
+        if(jstack.eq.0)return
+        ir=istack(jstack)
+        l=istack(jstack-1)
+        jstack=jstack-2
+      else
+        k=(l+ir)/2
+        temp=arr(k)
+        arr(k)=arr(l+1)
+        arr(l+1)=temp
+        if(arr(l+1).gt.arr(ir))then
+          temp=arr(l+1)
+          arr(l+1)=arr(ir)
+          arr(ir)=temp
+        endif
+        if(arr(l).gt.arr(ir))then
+          temp=arr(l)
+          arr(l)=arr(ir)
+          arr(ir)=temp
+        endif
+        if(arr(l+1).gt.arr(l))then
+          temp=arr(l+1)
+          arr(l+1)=arr(l)
+          arr(l)=temp
+        endif
+        i=l+1
+        j=ir
+        a=arr(l)
+3       continue
+          i=i+1
+        if(arr(i).lt.a)goto 3
+4       continue
+          j=j-1
+        if(arr(j).gt.a)goto 4
+        if(j.lt.i)goto 5
+        temp=arr(i)
+        arr(i)=arr(j)
+        arr(j)=temp
+        goto 3
+5       arr(l)=arr(j)
+        arr(j)=a
+        jstack=jstack+2
+        if(jstack.gt.NSTACK)pause 'NSTACK too small in sort'
+        if(ir-i+1.ge.j-l)then
+          istack(jstack)=ir
+          istack(jstack-1)=i
+          ir=j-1
+        else
+          istack(jstack)=j-1
+          istack(jstack-1)=l
+          l=i
+        endif
+      endif
+      goto 1
+      END
+
+SUBROUTINE sort2(n,arr,brr)
+      INTEGER n,M,NSTACK
+      REAL arr(n),brr(n)
+      PARAMETER (M=7,NSTACK=50)
+      INTEGER i,ir,j,jstack,k,l,istack(NSTACK)
+      REAL a,b,temp
+      jstack=0
+      l=1
+      ir=n
+1     if(ir-l.lt.M)then
+        do 12 j=l+1,ir
+          a=arr(j)
+          b=brr(j)
+          do 11 i=j-1,1,-1
+            if(arr(i).le.a)goto 2
+            arr(i+1)=arr(i)
+            brr(i+1)=brr(i)
+11        continue
+          i=0
+2         arr(i+1)=a
+          brr(i+1)=b
+12      continue
+        if(jstack.eq.0)return
+        ir=istack(jstack)
+        l=istack(jstack-1)
+        jstack=jstack-2
+      else
+        k=(l+ir)/2
+        temp=arr(k)
+        arr(k)=arr(l+1)
+        arr(l+1)=temp
+        temp=brr(k)
+        brr(k)=brr(l+1)
+        brr(l+1)=temp
+        if(arr(l+1).gt.arr(ir))then
+          temp=arr(l+1)
+          arr(l+1)=arr(ir)
+          arr(ir)=temp
+          temp=brr(l+1)
+          brr(l+1)=brr(ir)
+          brr(ir)=temp
+        endif
+        if(arr(l).gt.arr(ir))then
+          temp=arr(l)
+          arr(l)=arr(ir)
+          arr(ir)=temp
+          temp=brr(l)
+          brr(l)=brr(ir)
+          brr(ir)=temp
+        endif
+        if(arr(l+1).gt.arr(l))then
+          temp=arr(l+1)
+          arr(l+1)=arr(l)
+          arr(l)=temp
+          temp=brr(l+1)
+          brr(l+1)=brr(l)
+          brr(l)=temp
+        endif
+        i=l+1
+        j=ir
+        a=arr(l)
+        b=brr(l)
+3       continue
+          i=i+1
+        if(arr(i).lt.a)goto 3
+4       continue
+          j=j-1
+        if(arr(j).gt.a)goto 4
+        if(j.lt.i)goto 5
+        temp=arr(i)
+        arr(i)=arr(j)
+        arr(j)=temp
+        temp=brr(i)
+        brr(i)=brr(j)
+        brr(j)=temp
+        goto 3
+5       arr(l)=arr(j)
+        arr(j)=a
+        brr(l)=brr(j)
+        brr(j)=b
+        jstack=jstack+2
+        if(jstack.gt.NSTACK)pause 'NSTACK too small in sort2'
+        if(ir-i+1.ge.j-l)then
+          istack(jstack)=ir
+          istack(jstack-1)=i
+          ir=j-1
+        else
+          istack(jstack)=j-1
+          istack(jstack-1)=l
+          l=i
+        endif
+      endif
+      goto 1
+      END

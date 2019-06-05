@@ -1,0 +1,5 @@
+read.table('tabla2.csv',sep=',')-> D
+z <- D$V3
+m <- D$V7
+e <- D$V17
+plot(z,m-e,pch=19)

@@ -1,0 +1,135 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{amsmath }
+
+%Journals
+\def\apj {ApJ}
+\def\apjl {ApJL}
+\def\apjs {ApJS}
+\def\aj {AJ}
+\def\aap {A\&A}
+\def\mnras {MNRAS}
+
+% units
+\newcommand{\pc}{{\rm pc}}
+\newcommand{\kpc}{{\rm kpc}}
+\newcommand{\Mpc}{{\rm Mpc}}
+\newcommand{\kms}{{\rm km\,s^{-1}}}
+\newcommand{\keV}{{\rm keV}}
+\newcommand{\s}{{\rm s}}
+\newcommand{\Msun}{{\rm M_{\odot}}}
+\newcommand{\fdev}{\rm FracDeV_{r}}
+%.................................................................................................
+%opening
+\title{Segregaci\'on Morfol\'ogica en C\'umulos Ricos}
+\author{Agustín Rodríguez M.}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+En este trabajo estudiamos la segregaci\'on morfol\'ogica de los c\'umulos de galaxias. Utilizamos la muestra de galaxias en c\'umulos generada por \citet{Dressler1980.catalogo} y reprodujimos los resultados obtenidos por \citet{Dressler1980}. Encontramos que las galaxias espirales, lenticulares y el\'ipticas son sensibles a estos entornos. La fracci\'on de galaxias el\'ipticas y lenticulares crece a medida que aumenta la densidad, y la fracci\'on de espirales decrecen.
+Estudiamos la fracci\'on de los tipos morfol\'ogicos en funci\'on de la distancia al centro del c\'umulo, de acuerdo a lo realizado por \citet{Whitmore1993}, donde obtuvimos que la fracci\'on de galaxias el\'ipticas y lenticulares crece hac\'ia el centro de los c\'umulos, y las espirales decrecen. La relaci\'on morfología-centro es mas fundamental, sugiriendo que son las propiedades globales quienes controlan las fracciones morfol\'ogicas en los c\'umulos de galaxias.
+\end{abstract}
+
+
+%.................................................................................................
+
+\section{Introducci\'on}
+
+Es bien conocido el hecho de que las galaxias no estan uniformemente distribuidas en el espacio. Los grandes relevamientos dejan en evidencia este hecho, a partir de el reconocimiento de diversas estructuras de agrupamientos de galaxias. Dentro de este esquema, podemos distinguir desde regiones subdensas, conocidas como vac\'ios y regiones sobredensas, donde se encuentran los \textit{grupos} y \textit{c\'umulos} de galaxias. Si bien no existe un criterio universal que permita distinguir entre grupos y c\'umulos, es frecuente en la literatura separarlos en base a el n\'umero de miembros y el tama\~no donde se concentran. Un criterio razonable es pensar que los grupos son aquellas agrupaciones de $N\leq50$ mienbros y diametros de $D\leq1.5h^{-1}Mpc$. De la misma manera, un c\'umulo ser\'a entonces aquella agrupaci\'on de $N\geq50$ miembros y di\'ametro $D\geq1.5h^{-1}Mpc$ \citep{Schneider}.
+
+Los c\'umulos de galaxias son las estructuras m\'as masivas del universo. Tienen valores t\'ipicos de masas de $M\sim 3*10^{15}M_{\odot}$ para los c\'umulos mas masivos. Por el lado de los grupos, sus masas t\'ipicas son del orden de $M\sim3*10^{13}M_{\odot}$. 
+
+En cuanto a la composici\'on de la masa de los c\'umulos, es bien sabido que la masa \textit{gal\'actica} de estos es solo una peque\~na parte de la masa total. Gran parte de la masa de los c\'umulos corresponde a gas caliente a temperaturas de $T\sim3*10^{7}K$ localizado en el medio intra-c\'umulo. Este gas contiene mas materia bari\'onica que las estrellas de las galaxias miembros. Mas all\'a de esto, al igual que en las galaxias, la gran cantidad de la materia de c\'umulos corresponde a materia oscura \citep{Schneider}..
+
+En base a las bien conocidas clasificaciones morfol\'ogicas de las galaxias \citep{Hubble1926}, diversos estudios se han enfocado en las poblaciones de estas en diferentes ambientes. Se conoce de esta manera que existe un fuerte contraste entre las poblaciones de galaxias en los ambientes subdensos, donde abundan las galaxias espirales, y los entornos sobredensos, dominados por la presencia de galaxias el\'ipticas y lenticulares (\citealt{Morgan1961,Abell1965}).  
+
+En este trabajo nos proponemos trabajar sobre un cat\'alogo de c\'umulos elaborado por \citet{Dressler1980.catalogo} y recuperar los resultados obtenidos por el autor \citep{Dressler1980} y por \citet{Whitmore1993} respecto al porcentaje de los diferentes tipos morfol\'ogicos de galaxias, en funci\'on de la densidad de galaxias vecinas o respecto a la distancia al centro del c\'umulo. 
+
+\section{Datos}
+
+Los datos aqu\'i utilizados corresponden a 55 c\'umulos ricos de galaxias, conteniendo 5726 galaxias. Detalles sobre la obtenci\'on y tratamiento de los datos pueden encontrarse en el trabajo original de \citet{Dressler1980.catalogo}. El redshift de estos es $z\leq0.06$ y los miembros de cada c\'umulo son $N\geq50$. Utilizamos las posiciones $\alpha$ y $\delta$ de cada galaxia y de los centros de los c\'umulos. Los tipos morfol\'ogicos asignados a las galaxias de la muestra fueron El\'iptica (E), Lenticular (S0), Espiral (S) e Irrecular (Irr).
+
+\section{Gradientes de Poblaci\'on}
+\subsection{Morfollog\'ia y densidad local}
+
+Con motivo de estudiar como var\'ian los tipos morfol\'ogicos de galaxias en funci\'on de la densidad local, calculamos para cada galaxia de la muestra sus 10 galaxias vecinas mas cercanas. La d\'ecima galaxia mas lejada de cada una define entonces una distancia caracter\'istica que puede utilizarse para calcular un vol\'umen esf\'erico ($V^{\ast}$), centrado en una galaxia central, que contenga a las 10 galaxias vecinas. En base a este vol\'umen se calcula entonces la densidad local que viene dada por $10/V^{\ast}$. 
+
+De modo que para realizar el an\'alisis, lo que hacemos es computar para cada galaxia (que tendra asignado un cierto tipo morfol\'ogico), su densidad local. En la figura 1 presentamos los resultados obtenidos para la muestra de galaxias. La fracci\'on de galaxias indica el n\'umero de galaxias de una dada morfolog\'ia, dividida el total de galaxias que corresponden a ese bin de densidad local. 
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=10cm,height=10cm]{densidad.png}
+ % densidad.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Fracci\'on de tipos morfol\'ogicos en funci\'on de la densidad local. En puntos negros las galaxias E, en asteriscos las S0 y en puntos sin colorear las galaxias S + Irr. }
+ \label{fig:1}
+\end{figure}
+
+\subsection{Morfolog\'ia distancia al centro del c\'umulo}
+
+Los gradientes de poblaci\'on morfol\'ogica, aparte de estudiarse en funci\'on de la densidad local, pueden hacerse en funci\'on de la distancia al centro del c\'umulo. Este fue el enfoque utilizado por \citet{Whitmore1993} que aqu\'i intentaremos reproducir. Lo que hicimos fue computar para cada galaxia de un dado tipo morfol\'ogico, la distancia al centro del c\'umulo hu\'esped. 
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=10cm,height=10cm]{distanciacentro.png}
+ % distanciacentro.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Fracci\'on de tipo morfol\'ogico en funci\'on de la distancia al centro del c\'umulo. En puntos negros las galaxias E, en asteriscos las S0 y en puntos sin colorear las galaxias S + Irr.}
+ \label{fig: 2}
+\end{figure}
+
+En la figura 2 presentamos los resultados obtenidos en este caso. La fracci\'on de galaxias presentada indica el n\'umero de galaxias de una dada morfolog\'ia, dividida el total de galaxias correspondiente a un dado bin de distancia al centro del c\'umulo.
+
+\section{Discusiones}
+En el trabajo de \citet{Dressler1980} se intent\'o correlacionar la morfolog\'ia de las galaxias de los c\'umulos con la densidad local. Esto apreciamos en la figura 1 donde hemos intentado reproducir los resultados obtenidos en su trabajo. Podemos apreciar que cuanto mas denso es el entorno, la fracci\'on de galaxias el\'ipticas tiende a aumentar. Por otro lado, la fracci\'on de galaxias espirales disminuye a medida que la densidad local aumenta, y por el lado de las galaxias lenticulares, observamos un aumento de la fracci\'on en funci\'on de la densidad, aunque este es menos pronunciado que los otros dos perfiles. Estos resultados fueron igualmente obtenidos por \citet{Dressler1980}. 
+
+Si bien las correlaciones encontradas son claras, es interesante pensar que en los c\'umulos, las galaxias vecinas que cuantifican las densidades locales, son algo \textit{temporal}. Las galaxias en c\'umulos tienen velocidades muy altas con lo cual estos movimientos producen que las galaxias cambien de vecinas con relativa rapid\'es. Por lo cual cuantificar la morfolog\'ia en funci\'on de los entornos locales puede no ser una estrateg\'ia muy efectiva para enfocarse en el estudio de los \textit{gradientes} morfol\'ogicos. 
+
+En la figura 2 calculamos la fracci\'on de galaxias de un dado tipo morfol\'ogico en funci\'on de la distancia al centro del c\'umulo. Este fue el enfoque utilizado por \citet{Whitmore1993} que intentamos reproducir. Obtuvimos que la fracci\'on de galaxias espirales disminuye a medida que no acercamos al centro del c\'umulo, la fracci\'on de galaxias lenticulares crece, y por el lado de las el\'ipticas la fracci\'on es mas bien constante, con un fuerte crecimiento en las zonas muy proximas al centro del c\'umulo. Estos resultados son los mismos que los encontrados en el trabajo original.
+
+Este \'ultimo enfoque, parece mas apropiado que el primero presentado, debido que la distancia al centro del c\'umulo no es una propiedad tan \textit{momentanea} como la densidad local. El hecho de que la densidad de galaxias crezca hacia el centro de los c\'umulos nos ayuda a entender el comportamiento observado por \citet{Dressler1980} ya que hacia el interior de los c\'umulos las densidades locales aumentaran, si consideramos que estas zonas estan mas pobladas por galaxias espirales y S0, esto explica el hecho de que a medida que aumenta la densidad local, crezca la fracci\'on de estas galaxias, y disminuya la de galaxias espirales. 
+
+\section{Conclusiones}
+
+En este trabajo hemos estudiado como correlaciona la morfolog\'ia de las galaxias con el entorno, particularmente en los c\'umulos de galaxias. Nos hemos centrado en los trabajos de \citet{Dressler1980} y \citet{Whitmore1993} y hemos intentado reproducir los resultados obtenidos por ellos. Hemos calculado las fracciones de galaxias de una dada morfolog\'ia en funci\'on de la densidad local y de la distancia al centro del c\'umulo. En ambos casos hemos obtenidos los mismos comportamientos que los resultados de los trabajos originales. Estos pueden resumirse en:
+\begin{enumerate}
+ \item A medida que aumenta la densidad local, aumenta la fracci\'on de galaxias S0 y E, y disminuye la fracci\'on de galaxias S.
+ \item A medida que disminuye la distancia al centro del c\'umulo, aumenta la fracci\'on de galaxias E y S0, y disminuye la  fracci\'on de galaxias S.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\bibliographystyle{aa} %.bst
+\bibliography{biblio} %.bib
+
+%\begin{thebibliography}{}
+%\bibitem[York et al.(2000)]{b1} York, D.~G., Adelman, J., Anderson, J.~E., Jr., et al.\ 2000, \aj, 120, 1579 
+%\bibitem[Yip et al.(2004)]{Yip:2004} Yip, C.~W., Connolly, A.~J., Szalay, A.~S., et al.\ 2004, \aj, 128, 585 
+%\bibitem[Mart{\'{\i}}nez \& Muriel(2011)]{b2} Mart{\'{\i}}nez, H.~J., \& Muriel, H.\ 2011, \mnras, 418, L148
+%\end{thebibliography}
+
+%..................................................................................
+
+\end{document}
+

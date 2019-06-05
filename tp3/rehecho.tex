@@ -1,0 +1,244 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{amsmath }
+
+%Journals
+\def\apj {ApJ}
+\def\apjl {ApJL}
+\def\apjs {ApJS}
+\def\aj {AJ}
+\def\aap {A\&A}
+\def\mnras {MNRAS}
+
+% units
+\newcommand{\pc}{{\rm pc}}
+\newcommand{\kpc}{{\rm kpc}}
+\newcommand{\Mpc}{{\rm Mpc}}
+\newcommand{\kms}{{\rm km\,s^{-1}}}
+\newcommand{\keV}{{\rm keV}}
+\newcommand{\s}{{\rm s}}
+\newcommand{\Msun}{{\rm M_{\odot}}}
+\newcommand{\fdev}{\rm FracDeV_{r}}
+%.................................................................................................
+%opening
+\title{Funci\'on de Luminosidad}
+\author{Agustín Rodríguez M.}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+En este trabajo estudiamos la Funci\'on de Luminosidad.  Aplicamos el m\'etodo de $1/V_{max$} para el calculo de la FL en una muestra de $\sim500000$ galaxias en la banda r. Realizamos un ajuste de la funci\'on de Schechter para nuestros resultados y obtuvimos los par\'ametros $\Phi^{\ast}=4.32,M^{\ast}=-19.88,\alpha=-0.75$. Luego aplicamos el mismo m\'etodo para obtener la FL de una muestra de qu\'asars, separando nuestra muestra en diferentes rangos de redshifts. Observamos diferentes comportamientos de la FL en diferentes rangos de z, los qu\'asars a alto redshift contribuyen al extremo mas brillante de ls FL, mientras que los de bajo redshift al extremo de bajas luminosidades. 
+
+\end{abstract}
+
+
+%.................................................................................................
+
+\section{Introducci\'on}
+\subsection{Funci\'on de Luminosidad}
+La Funci\'on de Luminosidad (FL) de galaxias es la distribuci\'on de probabilidad $\Phi(M)$ sobre magnitudes absolutas M de galaxias \citep{Binggeli1988}. Constituye una herramienta fundamental para el estudio de las poblaciones de galaxias. Esta distribuci\'on satisface: 
+
+\begin{equation}
+ \int_{\Re}\Phi(M)dM=1
+\end{equation}
+Si N es el n\'umero de objetos en un volumen dV en un rango de magnitudes M y M + dM y las magnitudes M son estad\'isticamente independientes de la distribuci\'on espacial, la densidad de probabilidad conjunta N(M,x,y,z) puede expresarse de la siguiente manera:
+
+\begin{equation}
+ N(M,x,y,z)dMdV=\Phi(M)D(x,y,z)dMdV
+\end{equation}
+donde D(x,y,z) es la funci\'on de densidad espacial que describe el n\'umero de objetos por unidad de vol\'umen \citep{Binggeli1988}. 
+
+
+
+
+
+La FL puede realizarse sobre las galaxias de alg\'un tipo morfol\'ogico de la secuencia de Hubble, o sobre todas las galaxias, conoci\'endose esta \'ultima como la Funci\'on de Luminosidad \textit{general} (o universal). Esta funci\'on es muy importante en el estudio de la estructura en gran escala del universo, ya que permite estimar la cantidad total galaxias en cat\'alogos. El sesgo introducido en todos los relevamientos limitados en flujo, pueden ser corregidos mediante la FL, conociendose como \textit{Correcci\'on de Malquist}. 
+
+
+T\'ipicamente los c\'atalogos limitados en flujo se vuelven progresivamente m\'as incompletos a medida que aumenta el redshift. Se han desarrollado diversos m\'etodos para calcular la FL y corregir los cat\'alogos de estos efectos. En general, estos se basan en realizar una ponderaci\'on de las galaxias en base a sus magnitudes. 
+Uno de los m\'etodos m\'as usados y simples es el \textit{m\'etodo cl\'asico}, tambi\'en conocido como $1/V_{max}$.  Este se basa en la asumpci\'on de que la distribuci\'on de galaxias D(x,y,z) es uniforme. El m\'etodo pondera a las galaxias calculando el $V_{max}$, que es el volumen correspondiente a la m\'axima distancia que una galaxia puede ser observada y a\'un seguir perteneciendo a la muestra (ver secci\'on 2.1). Otro es el m\'etodo C \citep{Lynden-Bell1971}, que a diferencia del cl\'asico no hace suposiciones sobre la distribuci\'on espacial de galaxias \citep{Lynden-Bell1971}. La variedad de m\'etodos es muy amplia, dentro de los m\'as populares se encuentran, a parte de los ya mencionados, m\'etodos de \textit{Maximum Likelihood} como el de \citet{Choloniewski1986} o el m\'etodo de \textit{clustering} de \citet{Yee1984}.
+
+En el caso de \textit{galaxias normales}, (secci\'on 2.1), el comportamiento de la FL es bien ajustado por la funci\'on de Schechter \citep{Schneider}. La forma funcional de esta es :
+\begin{equation}
+ \Phi(M)=(0.4ln(10))\Phi^{\ast}10^{0.4(\alpha+1)(M-M^{\ast})}exp{(-10^{0.4(M^{\ast}-M)})}
+\end{equation}
+donde $M_{\ast}$ es una magnitud caracteristica sobre donde la distribuci\'on crece exponencialmente, $\alpha$ es la pendiente de la FL para M pequeñas y $\Phi^{\ast}$ especifica la normalizaci\'on de la distribuci\'on.
+
+La funci\'on de Schechter es una buena representaci\'on de la FL, aunque son comunes desviaciones de la misma. Es importante se\~nalar que la funci\'on de Schechter no tiene motivaciones f\'isicas, sino que proviene de pruebas de ajuste emp\'iricas. Cada tipo de galaxias tiene su propia forma para la FL y muestras en diferentes entornos tambi\'en presentan diferentes formas. \citep{Schneider}.
+
+\subsection{Qu\'asars (AGN's)}
+
+A menudo se divide a las galaxias en dos grandes grupos, galaxias \textit{normales} y galaxias \textit{peculiares}. Por galaxias normales, entendemos aquellas galaxias que morfol\'ogicamente clasificamos seg\'un la secuencia de Hubble. Estas tiene radiaci\'on t\'ermica debida a sus estrellas. Las galaxias peculiares por otro lado, presentan espectros mucho m\'as complejos que las normales, no pudiendo describirlos simplemente por radiaci\'on debida a estrellas. Dentro de este tipo de galaxias, podemos incluir a los AGN's (galaxias de n\'ucleos activos). 
+
+Se consideran como \textit{galaxias activas} aquellas que presentan una significativa emisi\'on de energ\'ia en sus regiones nucleares, emisi\'on que no se explica por los mecanismos  conocidos en la mayor\'ia de las galaxias, como las estrellas o regiones $H_{II}$. Los n\'ucleos de estas (AGN), comprenden las fuentes de luminosidad m\'as poderosas del universo conocido, esta emisi\'on comprende todo el espectro electromagn\'etico, con picos en el UV, y luminosidad significativa en rayos X e infrarojo. La potencia de la emisi\'on de los AGN var\'ia en escalas temporales de a\~nos, aunque en casos extremos puede llegar a ser de minutos. Los AGN's tienen tama\~nos acotados y grandes masas, implicando de esta manera altas densidades. Modelos actuales los describen como agujeros negros supermasivos acretando gas y polvo en el centro de una galaxia. Estos agujeros negros tambi\'en permiten explicar la fuerte emisi\'on no t\'ermica que presentan estos objetos.  
+
+Dentro de los AGN's, podemos encontrar diferentes objetos, como las galaxias Seyferts, Quasars, radio galaxias o Blazars. Todos ellos se diferencian por sus luminosidades o propiedades espectrales. Galaxias Seyferts por ejemplo, lucen \'opticamente como galaxias espirales, con una \'amplia emisi\'on en el n\'ucleo, especialmente en el infrarojo y radio. 
+
+
+
+
+
+
+Los Qu\'asars son los n\'ucleos activos mas luminosos dentro de todos los ANG's, tienen la capacidad de eclipsar a sus galaxias hu\'espedes y pueden encontrarse a altos redshifts. Sus tama\~nos angulares son muy pequen\~os, de modo que sus im\'agenes no se resuelven en el \'optico. De ah\'i su nombre, se debe a \textit{Quasistellar}. Podemos distinguir dos tipos de estos objetos bas\'adondonos en su emisi\'on, qu\'asars con l\'ineas de emisi\'on \'opticas (QSOs) y aquellos con l\'ineas de emisi\'on en radio (QSRs) (\citealt{Elmegreen,Schneider})
+
+El \textit{Modelo Unificado}, sugiere que en realidad, las galaxias activas pertenecen a un \'unico tipo de objetos. Es decir, Quasars, galaxias Seyferts, Radio galaxias y dem\'as AGN's mencionados anteriormente, pertenecen a \textit{N\'ucleos Activos} de las mismas caracter\'isticas, y que sus diferentes proyecciones en el plano del cielo, los hace ver como diferentes tipos de objetos. Si bien esta idea (el modelo unificado) a cobrado relevancia durante los \'ultimos a\~nos, a\'un se encuentra en discusi\'on.
+
+    
+
+
+
+\subsection{Correcci\'on K}
+Fuentes observadas en diferentes redshifts necesitaran una correcci\'on en sus magnitudes para poder ser comparadas entre ellas. Esto se conoce como correcci\'on K y se debe a la expansi\'on del universo. Atrav\'es de esta podemos transformar una longitud de onda observada $\lambda_{0}$, cuando la medimos a trav\'es de un filtro a un redshift z, a la longitud de onda emitida $\lambda_{e}$ a un sistema en reposo a $z_{0}$. 
+La correcci\'on K es una correcci\'on, que transforma la medida del flujo de un objeto a cierto redshift a una medida en un sistema en reposo \citep{Taverna}.
+
+De modo que las magnitudes absolutas de un objeto vendr\'an dadas por la siguiente relaci\'on: 
+\begin{equation}
+M = m - 25 - 5log_{10}(d_{l}) + E + K 
+\end{equation}
+Donde E es la extinsi\'on y $d_{l}$ la distancia luminosidad.
+
+La correcci\'on K no solo depende del redshift, sino que tambi\'en del filtro utilizado. En un filtro \textit{azul} voy a tener que hacer una correcci\'on mayor que en un filtro \textit{rojo}, debido a que la expansi\'on del universo me enrojece las galaxias, por lo observar una galaxia enrojecida, en un filtro azul, produce que uno este \textit{perdiendo mayor parte del espectro}, que cuando uno observe esa misma galaxia, pero en un filtro mas rojo. Si analizamos la morfolog\'ia, galaxias el\'ipticas necesitan una correcci\'on, en un mismo filtro, mas importante que las espirales. En un filtro \textit{rojo}, voy a observar poblaci\'on estelar \textit{roja} (los bulbos), donde las poblaciones no difieren tanto entre morfolog\'ias. Pero en un filtro \textit{azul}, una galaxia espiral tiene mas objetos azules que una el\'iptica, por lo que esta \'ultima me va a parecer mas d\'ebil, necesitando as\'i una mayor correcci\'on. 
+
+En la secci\'on ap\'endice se presentan los valores de las correcciones K para la muestra de 544449 galaxias del SDSS DR7 (\citealt{SDSS,Abazajian2009}) utilizada en este trabajo. Decidimos utilizar los valores de la correcci\'on K con sistema en reposo en $z_{0}=0.1$ (figura 4) debido a que la mayoria de galaxias del SDSS se encuentran a z$\sim$0.1, y alrededor de este redshift tendremos de esta manera correcciones pequeñas. 
+
+
+
+Corregimos nuestros datos de esta manera por la correcci\'on K, por la extinsi\'on E, y utilizamos una cosmolog\'ia con $H_{0}=100\kms Mpc$ para calcular las magnitudes absolutas siguiendo la f\'ormula (4).
+
+En el caso de los qu\'asars, la correcci\'on K tambi\'en es muy importante. Esta adopta una forma m\'as simple que en el caso de las galaxias ya que los espectros de estos objetos pueden describirse en una primera aproximaci\'on por una ley de potencia $f\sim\nu^{\alpha}$  \citep{Richstone1980}. De modo que la correcci\'on K adopta una forma simple que puede describirse como $K(z)=-2.5(\alpha+1)log(1+z)$. Los valores de $\alpha$ var\'ian dependiendo autores, siendo el mas aceptado $\alpha=0.5$ \citep{Wisotzki2000}.
+
+
+
+
+
+
+\section{Calculo de la Funci\'on de Luminosidad}
+\subsection{Galaxias}
+Trabajamos con una muestra limitada en magnitud en la banda r de $14.5 \leq m_{r} \leq17.77$.
+Con el prop\'osito de calcular la funci\'on de luminosidad y ajustarle alguna forma funcional, restringimos nuestra muestra de galaxias a aquellas que tengan magnitudes absolutas M entre $-16 \geq M_{r} \geq -23 $. Utilizamos el m\'etodo de $1/V_{max}$ para el c\'alculo de la FL. En un diferencial de volumen, esta es :
+\begin{equation}
+ \Phi(M)=\sum_{j=1}^{N}\frac{1}{V_{max}(j)}
+\end{equation}
+donde $V_{max}$ es el vol\'umen correspondiente a la m\'axima distancia a la que la j-\'esima galaxia puede ser observada y seguir perteneciendo a la muestra. Este volumen se calcula siguiendo: 
+\begin{equation}
+ V_{max}=\frac{c}{H_{0}} \int_{\Omega}\int_{z_{min}}^{z_{max}}\frac{d_{L}(z)^{2}(1+z)^{-2}dz}{\sqrt{\Omega_{0}(1+z)^{3}+(1-\Omega_{0}-\Omega_{\Lambda})(1+z)^{2}+\Omega_{\Lambda}}} 
+\end{equation}
+Donde $z_{min}$ y $z_{max}$ son los redshift m\'aximos donde las magnitudes l\'imite de la muestra se observar\'ian y seguir\'ian perteneciendo a la muestra
+\citep{Willmer1997}. Los par\'ametros cosmol\'ogicos utilizados para el c\'alculo de $V_{max}$ fueron $\Omega_{0}=0.3$ y $\Omega_{\Lambda}=0.7$, junto a $H_{0}=100\kms Mpc$.
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=10cm,height=10cm]{LFgalaxies.png}
+ % LFgalaxies.png: 502x500 px, 72dpi, 17.71x17.64 cm, bb=0 0 502 500
+ \caption{Funci\'on de Luminosidad para galaxias de la muestra. En tri\'angulos rojos se presentan los datos obtenidos por el m\'etodo $1/V_{max}$ y la l\'inea azul el ajuste de la funci\'on de Schechter.}
+ \label{fig:1}
+\end{figure}
+
+En la figura 1 presentamos la funci\'on de luminosidad obtenida para galaxias de la muestra. Realizamos una maximizaci\'on del \textit{likelihood} y obtuvimos los par\'ametros de la funci\'on de Schechter. Puede observarse la curva del ajuste superpuesta a los datos obtenidos para la FL, los resultados obtenidos fueron, $ M^{\ast}=-19.88\pm0.05, \alpha=-0.75\pm0.07, \Phi^{\ast}=4.32\pm0.06 $
+
+
+
+
+
+\subsection{Qu\'asars}
+Utilizando la muestra de Qu\'asars de \citet{Zandivarez2009} calculamos la funci\'on de Luminosidad utilizando el m\'etodo de $1/V_{max}$ explicado en la secci\'on 2.1. El c\'alculo de la FL fue realizado para la muestra completa y dividiendo en submuestras por redshift en el rango de qu\'asars con $z\leq1$, $1<z\leq1.5$ y $z>1.5$   con motivo de estudiar que rangos de desplazamiento al rojo contribuyen a diferentes secciones de la LF general. 
+
+Se ajust\'o una funci\'on de Schechter a las diferentes funciones de luminosidad obtenidas y los par\'ametros ajustados fueron los siguientes : 
+
+\begin{tabular}{| l | c | c | r | }
+ \hline			
+    & $\alpha$ & $M^{\ast}$ & $\Phi^{\ast}$ \\
+   general & $-1.32\pm0.08$ & $-26.76\pm0.08$ & $0.33\pm0.08$\\
+   $z\leq1 $& $-1.4\pm0.2$ &$ -24.3\pm0.1$ & $0.4\pm0.1$ \\
+ $1<z\leq1.5$ &$ -1.1\pm0.2 $& $-25.4\pm0.2$ & $-0.5\pm0.1$\\
+ $ 1.5<z$ & $-0.8\pm0.2$ & $-26.4\pm0.1$ & $-0.24\pm0.07$\\
+   \hline  
+ \end{tabular}
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=12cm,height=12cm]{LFqua3.png}
+ % LFquasar.png: 800x800 px, 100dpi, 20.32x20.32 cm, bb=0 0 576 576
+ \caption{Funciones de Luminosidad para Qu\'asars en diferentes rangos de redshifts y general. Con triangulos negros presentamos la FL de toda la muestra de qu\'asars, con circulos azules los qu\'asars a $z\geq1.5$, en estrellas verdes los qu\'asars a $1<z\leq1.5$, y en cruces rojas a  $z\leq1$. Las l\'ineas solidas presentan los ajustes de las funciones de Schechter para cada caso.}
+ \label{fig:2}
+\end{figure}
+ 
+\section{Discusiones}
+Respecto a la funci\'on de luminosidad encontrada para la muestra de galaxias normales, no podemos decir que el c\'alculo de la misma este en buen acuerdo con FL estimadas por otros autores. En el articulo de \citet{Blanton2001} se estim\'o la funci\'on de luminosidad para galaxias del SDSS, y obtuvieron par\'ametros considerablemente diferentes a los obtenidos en este trabajo. Para una muestra de $\sim 11000$ galaxias, en la banda r, calcularon $\Phi^{\ast}=1.46,M^{\ast}=-20.83,\alpha=-1.2$. Estas diferencias pueden deberse a que si bien las muestras de galaxias pertenecen al mismo filtro, las diferencias observadas pueden deberse a que los entornos de estas son diferentes, o que las proporciones de tipos morfol\'ogicos no son parecidas. Los m\'etodos utilizados para estimar la FL en cada caso fueron diferentes, lo cual tambi\'en puede introducir diferencias. En nuestro caso, utilizamos el m\'etodo cl\'asico, que es el mas sencillo. A\'un asi, la funci\'on de Schechter obtenida para nuestra muestra de galaxias representa bien el comportamiento de la FL ya que se ajusta bien a los valores estimados de la misma. 
+
+
+La figura 2 presenta en triangulos negros la funci\'on de luminosidad de toda la muestra completa, en circulos azules presentamos la FL para el rango de redshifts de $z\geq1.5$, en  estrellas verdes para $1<z\leq1.5$ y en cruces rojas para $z\leq1$. 
+Se evidencia en la figura un fuerte v\'inculo  de la funci\'on de luminosidad de los qu\'asars con el redshift. Se observan fuertes cambios de $M^{\ast}$ con z, lo cual podemos interpretar como una fuerte dependencia cosmol\'ogica de la funci\'on de luminosidad. A redshifts bajos la cantidad de qu\'asars con \textit{altas} luminosidades es muy baja en comparaci\'on de los redshits altas \citep{Schneider}.
+
+Este comportamiento de la FL a diferentes redshift ya fue detalladamente estudiado por \cite{Croom2009}. Tambi\'en encontraron que calcular la FL de muestras a diferentes redshifts produce que las magnitudes absolutas mas grandes pertenezcan a funciones de luminosidad de redshifts altos. Podemos decir entonces, comparando las funciones de luminosidad de la figura 2, que las galaxias a alto redshift, contribuyen a la parte de altas magnitudes de la FL, mientras que qu\'asars a bajo redshifts, contribuyen en el extremo de bajas magnitudes de la funci\'on de luminosidad. 
+Las l\'ineas continuas son ajustes de la funci\'on de Schechter realizados para cada rango de qu\'asars y la muestra total. Observamos que estos ajustes no logran ser buenos, ya que las funciones de luminosidad calculadas tienen caidas pronunciadas para bajas magnitudes, y la funci\'on de Schechter no logra representar satisfactoriamente este comportamiento. 
+
+ 
+\section{Conclusiones}
+
+En este trabajo hemos realizado un estudio de la funci\'on de luminosidad y su ajuste en forma de la funci\'on de Schechter. Primero calculamos la FL para una muestra de galaxias normales a trav\'es del m\'etodo $1/V_{max}$. Atrav\'es de este m\'etodo pudimos ponderar las galaxias de bajas magnitudes. Ajustamos una funci\'on de Schechter a nuestra funci\'on de luminosidad atrav\'es de cuadrados m\'inimos y calculamos los par\'ametros de la misma. 
+
+Luego realizamos el mismo trabajo sobre una muestra de Qu\'asars, en este caso la muestra era considerablemente mas chica.  Separamos los qu\'asars en diferentes rangos de redshift y calculamos la FL para cada rango, y la FL general para toda la muestra. De esta manera observamos lo ya se\~nalado en \citet{Croom2009} de que los qu\'asar a alto redshift contribuyen a el extremo m\'as brillante de la FL, y que los qu\'asars a bajos redshift al extremo de bajas luminosidad.
+
+Ajustamos funciones de Schechter a todas las funciones de luminosidad calculadas. Para la muestra de galaxias el ajuste obtenido representa muy bien la FL calculada. En el caso de los qu\'asar, observamos que las funciones de Schechter no son consistentes con las FL obtenidas. 
+
+
+
+
+
+
+
+
+
+
+
+\section{APENDICE}
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=10cm,height=10cm]{../tp3/Kz0.png}
+ % Kz0.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Correciones K para los diferentes filtros de el SDSS, a $z_{0}$=0 }
+ \label{fig:1}
+\end{figure}
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=10cm,height=10cm]{../tp3/Kz1.png}
+ % Kz1.png: 480x480 px, 72dpi, 16.93x16.93 cm, bb=0 0 480 480
+ \caption{Correcciones K para los diferentes filtros de el SDSS, a $z_{0}$=0.1}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\bibliographystyle{aa} %.bst
+\bibliography{biblio} %.bib
+
+%\begin{thebibliography}{}
+%\bibitem[York et al.(2000)]{b1} York, D.~G., Adelman, J., Anderson, J.~E., Jr., et al.\ 2000, \aj, 120, 1579 
+%\bibitem[Yip et al.(2004)]{Yip:2004} Yip, C.~W., Connolly, A.~J., Szalay, A.~S., et al.\ 2004, \aj, 128, 585 
+%\bibitem[Mart{\'{\i}}nez \& Muriel(2011)]{b2} Mart{\'{\i}}nez, H.~J., \& Muriel, H.\ 2011, \mnras, 418, L148
+%\end{thebibliography}
+
+%..................................................................................
+
+\end{document}
+

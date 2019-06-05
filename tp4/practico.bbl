@@ -1,0 +1,26 @@
+\begin{thebibliography}{7}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Abell}(1965)}]{Abell1965}
+{Abell}, G.~O. 1965, \araa, 3, 1
+
+\bibitem[{{Dressler}(1980{\natexlab{a}})}]{Dressler1980.catalogo}
+{Dressler}, A. 1980{\natexlab{a}}, \apjs, 42, 565
+
+\bibitem[{{Dressler}(1980{\natexlab{b}})}]{Dressler1980}
+{Dressler}, A. 1980{\natexlab{b}}, \apj, 236, 351
+
+\bibitem[{{Hubble}(1926)}]{Hubble1926}
+{Hubble}, E.~P. 1926, \apj, 64
+
+\bibitem[{{Morgan}(1961)}]{Morgan1961}
+{Morgan}, W.~W. 1961, Proceedings of the National Academy of Science, 47, 905
+
+\bibitem[{{Schneider}(2006)}]{Schneider}
+{Schneider}, P. 2006, {Extragalactic Astronomy and Cosmology}
+
+\bibitem[{{Whitmore} {et~al.}(1993){Whitmore}, {Gilmore}, \&
+  {Jones}}]{Whitmore1993}
+{Whitmore}, B.~C., {Gilmore}, D.~M., \& {Jones}, C. 1993, \apj, 407, 489
+
+\end{thebibliography}

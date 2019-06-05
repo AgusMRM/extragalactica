@@ -1,0 +1,15 @@
+field.dat tiene la siguiente info.		     
+
+                     ra,dec,z,Mr1,&
+                     ur,mur,r50,c,&
+     &               smass,sfr,ssfr,d4000,met,&
+     &               wp,mest,tau,zm,rsf,&
+     &               pe,ps,nuvr
+
+
+202     format(2(f10.6,1x),f7.5,1x,f7.3,1x,&
+              f7.3,1x,f6.3,1x,f7.3,1x,f7.3,1x,&
+              f8.3,1x,f7.3,1x,f7.3,1x,f9.3,1x,f8.3,1x,&
+              f7.3,1x,f6.3,1x,3(f8.4,1x),2(f7.3,1x),1x,f6.3)
+
+

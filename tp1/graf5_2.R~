@@ -1,0 +1,12 @@
+#jpeg('C_hist.jpeg')
+
+read.table('resultados.dat')-> d
+C <- d$V14
+frac <- d$V19
+x <-hist(C,breaks=seq(0.,40,.1))
+y <-hist(frac,breaks=seq(0.,1,.1))
+
+#plot(x$mids,x$count/sum(x$counts),type='s',col='blue',xlim=c(1.2,4.1),lwd=3,xlab='valor C',ylab='',main='Distribucion de C')
+
+plot(y$mids,y$count/sum(x$counts),type='s',col='red',lwd=3,xlab='fracDev',ylab='',main='Distribucion de fracDev')
+#dev.off()

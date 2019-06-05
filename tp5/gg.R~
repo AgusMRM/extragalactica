@@ -1,0 +1,16 @@
+read.table('field.dat')-> d
+
+smass <- d$V9
+met <- d$V13
+
+x <- subset(smass, met > -99 & smass > 5)
+y <- subset(met, met> -99 & smass > 5)
+
+xx <- data.frame(x,y)
+
+p <- ggplot(data=xx,aes(x,y)) + xlim(8,12) + ylim(8,9.5) +
+	theme_bw() + geom_point(size=.1) + 
+	geom_density_2d(n=20,aes(color=..level..))
+	#stat_density2d(aes(color=..level..))
+
+print(p)

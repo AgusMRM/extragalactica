@@ -1,0 +1,5 @@
+select top 10 soa.ra, soa.dec, soa.z, soa.specObjID, poa.petroMag_u, poa.petroMag_g, poa.petroMag_r, poa.petroMag_i, poa.petroMag_z, poa.modelMag_u, poa.modelMag_g, poa.modelMag_r,
+  poa.modelMag_i, poa.modelMag_z, poa.extinction_u, poa.extinction_g, poa.extinction_r, poa.extinction_i, poa.extinction_z, poa.petroR50_u, poa.petroR50_g, poa.petroR50_r, poa.petroR50_i,
+  poa.petroR50_z, poa.petroR90_u,poa.petroR90_g, poa.poa.petroR90_r, poa.poa.petroR90_i, poa.poa.petroR90_z, poa.fracDeV_r, soa.velDisp into mydb.MyTable from SpecObjAll as soa
+    join PhotoObjAll as poa on specObjID = objID
+  where (0.02 < soa.z < 0.05) and (14<(poa.petroMag_r+poa.extinction_r)<18)

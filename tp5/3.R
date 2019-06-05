@@ -1,0 +1,71 @@
+read.table('field.dat')-> d
+
+smass <- d$V9
+met <- d$V13
+wp <- d$V14
+
+
+x <- subset(smass, met > -99 & smass > 8 & smass < 12)
+y <- subset(met, met> -99 & smass > 8 & smass < 12)
+w <- subset(wp, met> -99 & smass > 8, smass < 12)
+
+
+
+plot(x,y,pch=19, cex=.1,col='grey',xlim=c(8,12),ylim=c(8,10))
+
+library(MASS)
+
+z <- kde2d(x,y,n=20)
+contour(z,col=terrain.colors(20))
+filled.contour(z,color.palette=terrain.colors)
+# LOS TENIA ASI PERO ANDA SIN EL ADD contour(z,add=TRUE,col=cm.colors(10))
+#filled.contour(z,add=TRUE,color.palette=cm.colors)
+
+kde2d.weighted <- function (x, y, w, h, n = n, lims = c(range(x), range(y))) {
+  nx <- length(x)
+  if (length(y) != nx) 
+      stop("data vectors must be the same length")
+  gx <- seq(lims[1], lims[2], length = n) # gridpoints x
+  gy <- seq(lims[3], lims[4], length = n) # gridpoints y
+  if (missing(h)) 
+    h <- c(bandwidth.nrd(x), bandwidth.nrd(y));
+  if (missing(w)) 
+    w <- numeric(nx)+1;
+  h <- h/4
+  ax <- outer(gx, x, "-")/h[1] # distance of each point to each grid point in x-direction
+  ay <- outer(gy, y, "-")/h[2] # distance of each point to each grid point in y-direction
+  z <- (matrix(rep(w,n), nrow=n, ncol=nx, byrow=TRUE)*matrix(dnorm(ax), n, nx)) %*% t(matrix(dnorm(ay), n, nx))/(sum(w) * h[1] * h[2]) # z is the density
+  return(list(x = gx, y = gy, z = z))
+}
+
+
+#den <- kde2d.weighted(x,y,w,n=20)
+#z <- den$z*sum(w) 
+
+#contour(den$x,den$y,z,add=TRUE,col='red')
+
+#read.table('medianared_dn.dat') ->S
+#points(S$V2,S$V3,pch=19,col='darkred')
+#segments(S$V2,S$V3-S$V4,S$V2,S$V3+S$V5,col='darkred')
+
+#read.table('medianaSblue_dn.dat') ->S
+#points(S$V2,S$V3,pch=19,col='darkblue')
+#segments(S$V2,S$V3-S$V4,S$V2,S$V3+S$V5,col='darkblue')
+
+#read.table('medianaredP.dat') ->S
+#points(S$V2,S$V3,pch=19,col='orange')
+#segments(S$V2,S$V3-S$V4,S$V2,S$V3+S$V5,col='orange')
+
+#read.table('medianablueF.dat') ->S
+#points(S$V2,S$V3,pch=19,col='blue')
+#segments(S$V2,S$V3-S$V4,S$V2,S$V3+S$V5,col='blue')
+
+
+#read.table('mediasmain.dat') ->S
+#points(S$V3,S$V1,pch=19,col='blue')
+#segments(S$V3,S$V1-S$V2,S$V3,S$V1+S$V2,col='red')
+#read.table('medias2.dat') ->S
+#points(S$V3,S$V2,pch=19,col='blue')
+#segments(S$V3,S$V2-S$V4,S$V3,S$V2+S$V4,col='blue')
+
+

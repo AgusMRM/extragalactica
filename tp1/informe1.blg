@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: informe1.aux
+The style file: aa.bst
+Database file #1: biblio.bib
+Repeated entry---line 459 of file biblio.bib
+ : @article{SDSS
+ :              ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "Binggeli1988"
+Warning--I didn't find a database entry for "Lynden-Bell1971"
+Warning--I didn't find a database entry for "Abazajian2009"
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+You've used 1 entry,
+            3039 wiz_defined-function locations,
+            678 strings with 7616 characters,
+and the built_in function-call counts, 7146 in all, are:
+= -- 465
+> -- 1307
+< -- 0
++ -- 436
+- -- 435
+* -- 750
+:= -- 1369
+add.period$ -- 1
+call.type$ -- 1
+change.case$ -- 149
+chr.to.int$ -- 1
+cite$ -- 1
+duplicate$ -- 18
+empty$ -- 28
+format.name$ -- 437
+if$ -- 1368
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 1
+newline$ -- 7
+num.names$ -- 4
+pop$ -- 149
+preamble$ -- 1
+purify$ -- 149
+quote$ -- 0
+skip$ -- 17
+stack$ -- 0
+substring$ -- 24
+swap$ -- 0
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 9
+warning$ -- 0
+while$ -- 4
+width$ -- 0
+write$ -- 13
+(There was 1 error message)
